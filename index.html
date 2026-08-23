@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#34255c">
+  <meta name="description" content="開始時間と終了時間からピアノ演奏の経過時間を60進のミリ秒単位で計算します。">
+  <title>演奏時間計算</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="calculator" aria-labelledby="app-title">
+      <header class="app-header">
+        <div class="mark" aria-hidden="true">♪</div>
+        <div>
+          <p class="eyebrow">PIANO RECITAL TOOL</p>
+          <h1 id="app-title">演奏時間計算</h1>
+          <p class="intro">開始と終了を入力して、演奏時間をすばやく確認。</p>
+        </div>
+      </header>
+
+      <form id="time-form" novalidate>
+        <div class="time-groups">
+          <fieldset class="time-card">
+            <legend><span class="step">1</span> 開始時間</legend>
+            <label class="single-time-input"><span class="visually-hidden">開始時間</span><input id="start-time" name="start-time" type="text" inputmode="numeric" autocomplete="off" maxlength="11" value="00:00:00:00" aria-describedby="format-hint"></label>
+          </fieldset>
+
+          <fieldset class="time-card">
+            <legend><span class="step">2</span> 終了時間</legend>
+            <label class="single-time-input"><span class="visually-hidden">終了時間</span><input id="end-time" name="end-time" type="text" inputmode="numeric" autocomplete="off" maxlength="11" value="00:00:00:00" aria-describedby="format-hint"></label>
+          </fieldset>
+        </div>
+
+        <p id="error-message" class="message error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button class="primary" type="submit">時間を計算</button>
+          <button class="secondary" id="clear-button" type="button">入力をクリア</button>
+        </div>
+      </form>
+
+      <section class="result" aria-labelledby="result-title" aria-live="polite">
+        <p id="result-title">演奏時間</p>
+        <output id="result-value">00:00:00:00</output>
+        <div class="unit-labels" aria-hidden="true"><span>時</span><span>分</span><span>秒</span><span>ミリ秒</span></div>
+      </section>
+
+      <p class="note" id="format-hint">数字8桁を入力：時・分・秒・ミリ秒（HH:MM:SS:CC）※末尾は00〜59</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
